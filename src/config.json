@@ -1,0 +1,16 @@
+{
+  "s3": {
+    "REGION": "eu-west-1",
+    "BUCKET": "subscriptions-app-uploads"
+  },
+  "apiGateway": {
+    "REGION": "eu-west-1",
+    "URL": "https://7qbebhbm55.execute-api.eu-west-1.amazonaws.com/prod"
+  },
+  "cognito": {
+    "REGION": "eu-west-1",
+    "USER_POOL_ID": "eu-west-1_znx05lL39",
+    "APP_CLIENT_ID": "e05vamff5jqdklop86omm51cu",
+    "IDENTITY_POOL_ID": "eu-west-1:3813e0c1-a564-4698-8acd-ea6dcdb1ee6e"
+  }
+}
