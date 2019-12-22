@@ -1,0 +1,24 @@
+.Container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.Title {
+  margin-bottom: 40px;
+}
+
+.Form {
+  background-color: var(--secondary-bg-color);
+  width: 360px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+  padding: 40px;
+  z-index: 2;
+}
+
+.MarginButton {
+  margin-top: 30px;
+}

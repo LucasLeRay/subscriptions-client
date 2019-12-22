@@ -1,0 +1,23 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.Container input {
+  border-style: none;
+  border-radius: 10px;
+  background-color: var(--main-bg-color);
+  height: 60px;
+  padding: 0 20px;
+  font-size: 20px;
+}
+
+.Container input:focus {
+  outline: none;
+}
+
+.Label {
+  font-size: 16px;
+  margin-bottom: 3px;
+}

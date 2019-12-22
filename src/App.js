@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, createContext } from 'react'
+import { Auth } from 'aws-amplify'
+import Nav from './Nav'
+import Header from './commons/Components/Header'
+
+export const Context = createContext()
 
 function App() {
+  const [user, setUser] = useState(false)
+  const [isAuthenticating, setIsAuthenticating] = useState(true)
+
+  async function onLoad() {
+    try {
+      await Auth.currentSession()
+      setUser(true)
+    } catch (err) {
+      if (err !== 'No current user') {
+        console.error(err)
+      }
+    }
+
+    setIsAuthenticating(false)
+  }
+
+  useEffect(() => {
+    onLoad()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Context.Provider value={{ user, setUser }}>
+        <Header />
+        {isAuthenticating ? 'LOADING' : <Nav />}
+      </Context.Provider>
+    </>
+  )
 }
 
-export default App;
+export default App

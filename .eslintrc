@@ -8,6 +8,12 @@
   "parser": "babel-eslint",
   "rules": {
     "no-negated-condition": 2,
+    "arrow-parens": "off",
+    "react/button-has-type": "off",
+    "object-curly-newline": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-wrap-multilines": "off",
+    "operator-linebreak": "off",
     "no-console": [
       1,
       {

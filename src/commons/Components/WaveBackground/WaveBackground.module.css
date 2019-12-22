@@ -1,0 +1,16 @@
+.Container {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+
+.WaveContainer {
+  position: relative;
+  top: 4px;
+}
+
+.Bottom {
+  background-color: var(--secondary-bg-color);
+  height: 200px;
+}

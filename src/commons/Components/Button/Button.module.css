@@ -1,0 +1,12 @@
+.Container {
+  border-style: none;
+  border-radius: 10px;
+  width: 100%;
+  height: 60px;
+  font-size: 28px;
+  font-weight: 700;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  cursor: pointer;
+}

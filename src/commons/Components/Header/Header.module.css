@@ -1,0 +1,21 @@
+.Container {
+  width: 100vw;
+  height: 60px;
+  background-color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Logo {
+  color: var(--bright-text-color);
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+.Elements a {
+  color: var(--bright-text-color);
+  font-weight: 700;
+  margin-right: 20px;
+  text-decoration: none;
+}
