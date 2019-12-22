@@ -13,7 +13,7 @@ import { Context } from '../../../App'
 import Button from '../Button'
 
 function Header({ location: { pathname } }) {
-  const { setUser } = useContext(Context)
+  const { user, setUser } = useContext(Context)
 
   async function handleLogout() {
     await Auth.signOut()
@@ -26,10 +26,15 @@ function Header({ location: { pathname } }) {
         <div className={Logo}>SubFollow</div>
       </Link>
       <div className={Elements}>
-        {pathname === '/' && (
+        {pathname === '/' && !user && (
           <Link to="/login">
             <span className={LandingLink}>Login</span>
           </Link>
+        )}
+        {pathname === '/' && user && (
+          <span className={LandingLink} onClick={handleLogout}>
+            Logout
+          </span>
         )}
         {pathname === '/login' && (
           <Link to="/signup">

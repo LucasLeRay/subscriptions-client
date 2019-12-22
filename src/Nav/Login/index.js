@@ -11,11 +11,14 @@ import {
   Form,
   ForgotPassword,
   MarginButton,
+  ErrorWrapper,
 } from './Login.module.css'
 import { Context } from '../../App'
 import useForm from '../../commons/hooks/useForm'
 
 function Login({ history: { push } }) {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const [fields, handleFieldChange] = useForm({
     email: '',
     password: '',
@@ -23,18 +26,28 @@ function Login({ history: { push } }) {
   const { user, setUser } = useContext(Context)
 
   function validateForm() {
-    return fields.email.length > 0 && fields.password.length > 0
+    if (fields.email.length === 0) return 'Email is required'
+    if (fields.password.length === 0) return 'Password is required'
+    return ''
   }
 
   async function handleSubmit(e) {
     e.preventDefault()
 
-    try {
-      await Auth.signIn(fields.email, fields.password)
-      setUser(true)
-      push('/')
-    } catch (err) {
-      console.error(err)
+    const customError = validateForm()
+    if (customError) {
+      setError(customError)
+    } else {
+      try {
+        setLoading(true)
+        await Auth.signIn(fields.email, fields.password)
+        setUser(true)
+        push('/')
+      } catch (err) {
+        setError(err.message)
+        console.error(err)
+        setLoading(false)
+      }
     }
   }
 
@@ -66,9 +79,10 @@ function Login({ history: { push } }) {
           value={fields.password}
           onChange={handleFieldChange}
         />
-        <Button className={MarginButton} type="submit" invertOnHover>
+        <Button loading={loading} className={MarginButton} type="submit">
           Submit
         </Button>
+        <span className={ErrorWrapper}>{error}</span>
       </form>
     </div>
   )

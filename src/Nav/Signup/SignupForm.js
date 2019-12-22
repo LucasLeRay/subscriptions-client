@@ -1,20 +1,39 @@
 import React from 'react'
-import { func, shape, string } from 'prop-types'
+import { func, shape, string, bool } from 'prop-types'
 import Input from '../../commons/Components/Input'
 import Button from '../../commons/Components/Button'
-import { Form, MarginButton } from './Signup.module.css'
+import { Form, MarginButton, ErrorWrapper } from './Signup.module.css'
 
-function SignupForm({ handleSubmit, fields, handleFieldChange }) {
+function SignupForm({
+  handleSubmit,
+  fields,
+  handleFieldChange,
+  error,
+  setError,
+  loading,
+}) {
   function validateForm() {
-    return (
-      fields.email.length > 0 &&
-      fields.password.length > 0 &&
-      fields.password === fields.confirmPassword
-    )
+    if (fields.email.length === 0) return 'Email is required'
+    if (fields.password.length === 0) return 'Password is required'
+    if (fields.password !== fields.confirmPassword) {
+      return "The two passwords don't match"
+    }
+    return ''
   }
 
   return (
-    <form className={Form} onSubmit={handleSubmit}>
+    <form
+      className={Form}
+      onSubmit={e => {
+        e.preventDefault()
+        const customError = validateForm()
+        if (customError) {
+          setError(customError)
+        } else {
+          handleSubmit()
+        }
+      }}
+    >
       <Input
         id="email"
         label={<>E-mail</>}
@@ -36,9 +55,10 @@ function SignupForm({ handleSubmit, fields, handleFieldChange }) {
         value={fields.confirmPassword}
         onChange={handleFieldChange}
       />
-      <Button className={MarginButton} type="submit" disabled={!validateForm()}>
+      <Button loading={loading} className={MarginButton} type="submit">
         Submit
       </Button>
+      <span className={ErrorWrapper}>{error}</span>
     </form>
   )
 }
@@ -51,6 +71,9 @@ SignupForm.propTypes = {
     confirmPassword: string.isRequired,
   }).isRequired,
   handleFieldChange: func.isRequired,
+  error: string.isRequired,
+  setError: func.isRequired,
+  loading: bool.isRequired,
 }
 
 export default SignupForm

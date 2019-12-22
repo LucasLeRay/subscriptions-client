@@ -17,29 +17,36 @@ function Signup() {
   })
   const { user, setUser } = useContext(Context)
   const [userCreated, setUserCreated] = useState(null)
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  async function handleSubmit(e) {
-    e.preventDefault()
+  async function handleSubmit() {
     try {
+      setLoading(true)
       const newUser = await Auth.signUp({
         username: fields.email,
         password: fields.password,
       })
+      setError('')
       setUserCreated(newUser)
     } catch (err) {
+      setError(err.message)
       console.error(err)
     }
+    setLoading(false)
   }
 
-  async function handleConfirmationSubmit(e) {
-    e.preventDefault()
-
+  async function handleConfirmationSubmit() {
     try {
+      setLoading(true)
       await Auth.confirmSignUp(fields.email, fields.confirmationCode)
       await Auth.signIn(fields.email, fields.password)
+      setError('')
       setUser(true)
     } catch (err) {
+      setError(err.message)
       console.error(err)
+      setLoading(false)
     }
   }
 
@@ -53,12 +60,18 @@ function Signup() {
           handleSubmit={handleConfirmationSubmit}
           fields={fields}
           handleFieldChange={handleFieldChange}
+          error={error}
+          setError={setError}
+          loading={loading}
         />
       ) : (
         <SignupForm
           handleSubmit={handleSubmit}
           fields={fields}
           handleFieldChange={handleFieldChange}
+          error={error}
+          setError={setError}
+          loading={loading}
         />
       )}
     </div>

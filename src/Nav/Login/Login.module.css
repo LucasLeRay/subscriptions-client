@@ -15,7 +15,7 @@
   width: 360px;
   border-radius: 10px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
-  padding: 40px;
+  padding: 40px 40px 20px 40px;
   z-index: 2;
 }
 
@@ -26,4 +26,14 @@
 
 .MarginButton {
   margin-top: 30px;
+}
+
+.ErrorWrapper {
+  display: flex;
+  color: red;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+  height: 20px;
+  text-align: center;
 }

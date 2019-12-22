@@ -1,16 +1,37 @@
 import React from 'react'
-import { func, shape, string } from 'prop-types'
+import { func, shape, string, bool } from 'prop-types'
 import Input from '../../commons/Components/Input'
 import Button from '../../commons/Components/Button'
-import { Form, MarginButton } from './Signup.module.css'
+import { Form, MarginButton, ErrorWrapper } from './Signup.module.css'
 
-function SignupForm({ handleSubmit, fields, handleFieldChange }) {
+function SignupForm({
+  handleSubmit,
+  fields,
+  handleFieldChange,
+  error,
+  setError,
+  loading,
+}) {
   function validateForm() {
-    return fields.confirmationCode.length > 0
+    if (fields.confirmationCode.length === 0) {
+      return 'Confirmation code is required'
+    }
+    return ''
   }
 
   return (
-    <form className={Form} onSubmit={handleSubmit}>
+    <form
+      className={Form}
+      onSubmit={e => {
+        e.preventDefault()
+        const customError = validateForm()
+        if (customError) {
+          setError(customError)
+        } else {
+          handleSubmit()
+        }
+      }}
+    >
       <Input
         id="confirmationCode"
         label={<>Confirmation code</>}
@@ -18,9 +39,10 @@ function SignupForm({ handleSubmit, fields, handleFieldChange }) {
         value={fields.confirmationCode}
         onChange={handleFieldChange}
       />
-      <Button className={MarginButton} type="submit" disabled={!validateForm()}>
+      <Button loading={loading} className={MarginButton} type="submit">
         Submit
       </Button>
+      <span className={ErrorWrapper}>{error}</span>
     </form>
   )
 }
@@ -31,6 +53,9 @@ SignupForm.propTypes = {
     confirmationCode: string.isRequired,
   }).isRequired,
   handleFieldChange: func.isRequired,
+  error: string.isRequired,
+  setError: func.isRequired,
+  loading: bool.isRequired,
 }
 
 export default SignupForm
