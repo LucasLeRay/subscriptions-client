@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { Auth } from 'aws-amplify'
 import { shape, func } from 'prop-types'
@@ -66,11 +66,7 @@ function Login({ history: { push } }) {
           value={fields.password}
           onChange={handleFieldChange}
         />
-        <Button
-          className={MarginButton}
-          type="submit"
-          disabled={!validateForm()}
-        >
+        <Button className={MarginButton} type="submit" invertOnHover>
           Submit
         </Button>
       </form>
