@@ -1,10 +1,12 @@
 import React from 'react'
-import { element } from 'prop-types'
+import { element, string } from 'prop-types'
 import { Container, Label } from './Input.module.css'
 
-function Input({ label, ...props }) {
+const classNames = array => array.filter(Boolean).join(' ')
+
+function Input({ label, className, ...props }) {
   return (
-    <div className={Container}>
+    <div className={classNames([Container, className])}>
       <span className={Label}>{label}</span>
       <input {...props} />
     </div>
@@ -13,6 +15,7 @@ function Input({ label, ...props }) {
 
 Input.propTypes = {
   label: element,
+  className: string.isRequired,
 }
 
 Input.defaultProps = {

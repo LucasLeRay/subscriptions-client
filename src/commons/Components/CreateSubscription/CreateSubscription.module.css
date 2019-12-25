@@ -1,0 +1,38 @@
+.Container {
+  padding: 50px;
+}
+
+.Form {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Form h2 {
+  font-weight: 400;
+  font-size: 22px;
+  margin-bottom: 60px;
+}
+
+.ServiceInput {
+  width: 400px;
+}
+
+.Buttons {
+  display: flex;
+  margin-top: 60px;
+}
+
+.Buttons button {
+  width: 150px;
+  font-size: 25px;
+}
+
+.CancelButton {
+  margin-right: 20px;
+}
+
+.ActiveButton {
+  margin-left: 20px;
+}

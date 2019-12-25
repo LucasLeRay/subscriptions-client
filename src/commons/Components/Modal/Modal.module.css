@@ -1,0 +1,25 @@
+.Background {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Content {
+  box-shadow: 0 2px 10px 0 hsla(0, 0%, 0%, 0.2);
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+@media (max-width: 576px) {
+  .Content > div {
+    padding: 20px;
+  }
+}
