@@ -7,12 +7,10 @@ import {
   ServiceWrapper,
   Recurrence,
   RightPart,
-  Price,
   NextPayment,
 } from './Service.module.css'
-import calcDayLeft from '../../../helpers/calcDayLeft'
 
-function Service({ service, image, recurrence, price, payDay, payMonth }) {
+function Service({ service, image, recurrence, cost, dayLeft }) {
   return (
     <div className={Container}>
       <div className={LeftPart}>
@@ -23,10 +21,10 @@ function Service({ service, image, recurrence, price, payDay, payMonth }) {
         </div>
       </div>
       <div className={RightPart}>
-        <h3 className={Price}>{`$${price}`}</h3>
+        <h3>{`$${cost.toFixed(2)}`}</h3>
         <div className={NextPayment}>
           <span>in</span>
-          <h4>{`${calcDayLeft(payDay, payMonth)} d`}</h4>
+          <h4>{`${dayLeft} d`}</h4>
         </div>
       </div>
     </div>
@@ -37,14 +35,12 @@ Service.propTypes = {
   service: string.isRequired,
   image: string,
   recurrence: string.isRequired,
-  price: number.isRequired,
-  payDay: number.isRequired,
-  payMonth: number,
+  cost: number.isRequired,
+  dayLeft: number.isRequired,
 }
 
 Service.defaultProps = {
   image: '',
-  payMonth: 0,
 }
 
 export default Service

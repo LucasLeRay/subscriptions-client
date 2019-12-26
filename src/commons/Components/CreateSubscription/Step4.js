@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { func, shape, string } from 'prop-types'
 import {
   Form,
@@ -8,29 +8,37 @@ import {
 } from './CreateSubscription.module.css'
 import Button from '../Button'
 import Service from '../Service'
+import calcDayLeft from '../../../helpers/calcDayLeft'
 
 const classNames = array => array.filter(Boolean).join(' ')
 
 function Step4({
   prevStep,
   handleSubmit,
-  fields: { service, price, recurrence, payDay, payMonth },
+  fields: { service, cost, recurrence, payDay, payMonth },
 }) {
+  const [loading, setLoading] = useState(false)
   return (
     <div className={classNames([Form, Step4Wrapper])}>
       <h1>Overview</h1>
       <Service
         service={service}
         recurrence={recurrence}
-        price={Number(price)}
-        payDay={Number(payDay)}
-        payMonth={Number(payMonth)}
+        cost={Number(cost)}
+        dayLeft={calcDayLeft(Number(payDay), Number(payMonth))}
       />
       <div className={Buttons}>
         <Button onClick={prevStep} className={ActiveButton}>
           Previous
         </Button>
-        <Button onClick={handleSubmit} className={ActiveButton}>
+        <Button
+          onClick={() => {
+            setLoading(true)
+            handleSubmit()
+          }}
+          loading={loading}
+          className={ActiveButton}
+        >
           Confirm
         </Button>
       </div>
@@ -43,7 +51,7 @@ Step4.propTypes = {
   handleSubmit: func.isRequired,
   fields: shape({
     service: string.isRequired,
-    price: string.isRequired,
+    cost: string.isRequired,
     recurrence: string.isRequired,
     payDay: string.isRequired,
     payMonth: string.isRequired,

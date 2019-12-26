@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { API } from 'aws-amplify'
 import { func } from 'prop-types'
 import { Container } from './CreateSubscription.module.css'
 import useForm from '../../hooks/useForm'
@@ -11,7 +12,7 @@ function CreateSubscription({ onDone }) {
   const [step, setStep] = useState(1)
   const [fields, handleFieldChange] = useForm({
     service: '',
-    price: '',
+    cost: '',
     recurrence: '',
     payDay: '',
     payMonth: '',
@@ -25,8 +26,26 @@ function CreateSubscription({ onDone }) {
     setStep(step + 1)
   }
 
-  function handleSubmit() {
-    onDone()
+  function create() {
+    const { service, cost, recurrence, payDay, payMonth } = fields
+    return API.post('subscriptions', '/subscriptions', {
+      body: {
+        service,
+        cost: Number(cost),
+        recurrence,
+        payDay: Number(payDay),
+        payMonth: Number(payMonth),
+      },
+    })
+  }
+
+  async function handleSubmit() {
+    try {
+      await create()
+      onDone()
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   return (

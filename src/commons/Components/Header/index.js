@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { shape, string } from 'prop-types'
 import { withRouter, Link } from 'react-router-dom'
 import { Auth } from 'aws-amplify'
@@ -11,9 +11,12 @@ import {
 } from './Header.module.css'
 import { Context } from '../../../App'
 import Button from '../Button'
+import Modal from '../Modal'
+import CreateSubscription from '../CreateSubscription'
 
 function Header({ location: { pathname } }) {
   const { user, setUser } = useContext(Context)
+  const [createSubscription, setCreateSubscription] = useState(false)
 
   async function handleLogout() {
     await Auth.signOut()
@@ -22,6 +25,11 @@ function Header({ location: { pathname } }) {
 
   return (
     <div className={Container}>
+      {createSubscription && (
+        <Modal onClickOutSide={() => setCreateSubscription(false)}>
+          <CreateSubscription onDone={() => setCreateSubscription(false)} />
+        </Modal>
+      )}
       <Link to="/">
         <div className={Logo}>SubFollow</div>
       </Link>
@@ -32,9 +40,19 @@ function Header({ location: { pathname } }) {
           </Link>
         )}
         {pathname === '/' && user && (
-          <span className={LandingLink} onClick={handleLogout}>
-            Logout
-          </span>
+          <>
+            <Button
+              className={ButtonHeader}
+              onClick={() => setCreateSubscription(true)}
+              textColor="#f14d38"
+              backgroundColor="#fff"
+            >
+              Nouvel abonnement
+            </Button>
+            <span className={LandingLink} onClick={handleLogout}>
+              Logout
+            </span>
+          </>
         )}
         {pathname === '/login' && (
           <Link to="/signup">

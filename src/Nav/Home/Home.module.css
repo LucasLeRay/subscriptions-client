@@ -4,7 +4,14 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
   text-align: center;
+}
+
+.LoadingWrapper {
+  display: flex;
+  align-items: center;
+  height: calc(100vh - 60px);
 }
 
 .NoSubscription {
@@ -17,4 +24,18 @@
 
 .NoSubscription button {
   width: 350px;
+}
+
+.SubscriptionsWrapper {
+  height: 100%;
+  margin-top: 50px;
+}
+
+.DateTitle {
+  font-size: 30px;
+}
+
+.DateTitle {
+  display: flex;
+  margin: 40px 0 20px 30px;
 }

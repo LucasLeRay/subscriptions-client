@@ -11,20 +11,20 @@ import Input from '../Input'
 import Button from '../Button'
 import Select from '../Select'
 
-const priceRegExp = /^[0-9]*(\.)?[0-9]*$/
+const costRegExp = /^[0-9]*(\.)?[0-9]*$/
 
 function Step2({
   prevStep,
   nextStep,
-  fields: { price, recurrence },
+  fields: { cost, recurrence },
   handleFieldChange,
 }) {
   function validateFields() {
-    return price.length > 0 && ['month', 'year'].includes(recurrence)
+    return cost.length > 0 && ['month', 'year'].includes(recurrence)
   }
 
-  function handlePriceChange(e) {
-    if (priceRegExp.test(e.target.value)) {
+  function handleCostChange(e) {
+    if (costRegExp.test(e.target.value)) {
       handleFieldChange(e)
     }
   }
@@ -34,10 +34,10 @@ function Step2({
       <h2>How many do you pay?</h2>
       <div className={Step2Wrapper}>
         <Input
-          id="price"
+          id="cost"
           type="number"
-          value={price}
-          onChange={handlePriceChange}
+          value={cost}
+          onChange={handleCostChange}
         />
         <span className={TextInput}>every</span>
         <Select
@@ -76,7 +76,7 @@ Step2.propTypes = {
   prevStep: func.isRequired,
   nextStep: func.isRequired,
   fields: shape({
-    price: string.isRequired,
+    cost: string.isRequired,
     recurrence: string.isRequired,
   }).isRequired,
   handleFieldChange: func.isRequired,

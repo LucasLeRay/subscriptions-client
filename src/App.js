@@ -30,7 +30,7 @@ function App() {
     <>
       <Context.Provider value={{ user, setUser }}>
         <Header />
-        {isAuthenticating ? 'LOADING' : <Nav />}
+        {!isAuthenticating && <Nav />}
       </Context.Provider>
     </>
   )
