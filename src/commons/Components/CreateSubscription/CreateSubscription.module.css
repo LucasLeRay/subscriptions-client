@@ -59,12 +59,21 @@
 .Step3Wrapper {
   display: flex;
   align-items: center;
-  margin: 0 50px 20px;
+  margin: 0 20px 20px;
 }
 
-.Step3Wrapper > div {
-  margin: 0 10px;
+.Step3Wrapper div:nth-child(2) {
+  margin-bottom: 0;
+}
+
+.PayDay {
   width: 65px;
+  margin: 0 10px;
+}
+
+.PayMonth {
+  width: 180px;
+  margin: 0 10px 0 0;
 }
 
 .TextInput {

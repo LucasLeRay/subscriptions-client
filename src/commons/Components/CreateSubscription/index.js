@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { func } from 'prop-types'
 import { Container } from './CreateSubscription.module.css'
 import useForm from '../../hooks/useForm'
 import Step1 from './Step1'
@@ -63,6 +64,10 @@ function CreateSubscription({ onDone }) {
       )}
     </div>
   )
+}
+
+CreateSubscription.propTypes = {
+  onDone: func.isRequired,
 }
 
 export default CreateSubscription

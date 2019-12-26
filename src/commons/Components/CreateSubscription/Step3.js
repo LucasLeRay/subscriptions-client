@@ -6,9 +6,27 @@ import {
   Buttons,
   TextInput,
   Step3Wrapper,
+  PayDay,
+  PayMonth,
 } from './CreateSubscription.module.css'
 import Input from '../Input'
 import Button from '../Button'
+import Select from '../Select'
+
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]
 
 function Step3({
   prevStep,
@@ -17,7 +35,13 @@ function Step3({
   handleFieldChange,
 }) {
   function validateFields() {
-    return payDay.length > 0 && (recurrence === 'month' || payMonth.length > 0)
+    return (
+      payDay.length > 0 &&
+      Number(payDay) > 0 &&
+      Number(payDay) <= 30 &&
+      (recurrence === 'month' ||
+        (payMonth.length > 0 && Number(payMonth) <= 12 && Number(payMonth) > 0))
+    )
   }
 
   return (
@@ -26,17 +50,24 @@ function Step3({
       <div className={Step3Wrapper}>
         <span className={TextInput}>The</span>
         <Input
+          className={PayDay}
           id="payDay"
-          type="text"
+          type="number"
+          min="1"
+          max="30"
           value={payDay}
           onChange={handleFieldChange}
         />
         {recurrence === 'year' && (
-          <Input
-            id="payMonth"
+          <Select
+            className={PayMonth}
             type="text"
-            value={payMonth}
-            onChange={handleFieldChange}
+            value={{ label: months[payMonth - 1], value: String(payMonth) }}
+            options={months.map((value, index) => ({
+              label: value,
+              value: String(index + 1),
+            }))}
+            onChange={e => handleFieldChange(e, 'payMonth')}
           />
         )}
         <span className={TextInput}>{`of each ${recurrence}`}</span>

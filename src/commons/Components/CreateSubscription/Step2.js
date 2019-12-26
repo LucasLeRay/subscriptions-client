@@ -9,6 +9,9 @@ import {
 } from './CreateSubscription.module.css'
 import Input from '../Input'
 import Button from '../Button'
+import Select from '../Select'
+
+const priceRegExp = /^[0-9]*(\.)?[0-9]*$/
 
 function Step2({
   prevStep,
@@ -20,22 +23,37 @@ function Step2({
     return price.length > 0 && ['month', 'year'].includes(recurrence)
   }
 
+  function handlePriceChange(e) {
+    if (priceRegExp.test(e.target.value)) {
+      handleFieldChange(e)
+    }
+  }
+
   return (
     <div className={Form}>
       <h2>How many do you pay?</h2>
       <div className={Step2Wrapper}>
         <Input
           id="price"
-          type="text"
+          type="number"
           value={price}
-          onChange={handleFieldChange}
+          onChange={handlePriceChange}
         />
         <span className={TextInput}>every</span>
-        <Input
-          id="recurrence"
+        <Select
           type="text"
-          value={recurrence}
-          onChange={handleFieldChange}
+          value={{ label: recurrence, value: recurrence }}
+          onChange={e => handleFieldChange(e, 'recurrence')}
+          options={[
+            {
+              label: 'month',
+              value: 'month',
+            },
+            {
+              label: 'year',
+              value: 'year',
+            },
+          ]}
         />
       </div>
       <div className={Buttons}>

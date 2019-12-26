@@ -1,0 +1,17 @@
+.Container {
+  border-style: none;
+  border-radius: 10px;
+  background-color: var(--main-bg-color);
+  height: 60px;
+  font-size: 20px;
+  margin-top: 3px;
+}
+
+.Container > div {
+  border: none;
+}
+
+.SelectWrapper {
+  position: relative;
+  justify-content: center;
+}

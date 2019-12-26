@@ -5,11 +5,18 @@ function useForm(initialState) {
 
   return [
     fields,
-    event => {
-      setValues({
-        ...fields,
-        [event.target.id]: event.target.value,
-      })
+    (event, id) => {
+      if (id) {
+        setValues({
+          ...fields,
+          [id]: event.value,
+        })
+      } else {
+        setValues({
+          ...fields,
+          [event.target.id]: event.target.value,
+        })
+      }
     },
   ]
 }
