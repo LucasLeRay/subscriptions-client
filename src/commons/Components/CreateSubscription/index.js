@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { func } from 'prop-types'
-import { Container, Form } from './CreateSubscription.module.css'
-import Button from '../Button'
-import Input from '../Input'
+import { Container } from './CreateSubscription.module.css'
 import useForm from '../../hooks/useForm'
 import Step1 from './Step1'
+import Step2 from './Step2'
+import Step3 from './Step3'
+import Step4 from './Step4'
 
 function CreateSubscription({ onDone }) {
   const [step, setStep] = useState(1)
@@ -13,8 +13,8 @@ function CreateSubscription({ onDone }) {
     price: '',
     recurrence: '',
     payDay: '',
+    payMonth: '',
   })
-  const [payMonth, setPayMonth] = useState('')
 
   function prevStep() {
     setStep(step - 1)
@@ -22,6 +22,10 @@ function CreateSubscription({ onDone }) {
 
   function nextStep() {
     setStep(step + 1)
+  }
+
+  function handleSubmit() {
+    onDone()
   }
 
   return (
@@ -32,6 +36,29 @@ function CreateSubscription({ onDone }) {
           nextStep={nextStep}
           fields={fields}
           handleFieldChange={handleFieldChange}
+        />
+      )}
+      {step === 2 && (
+        <Step2
+          prevStep={prevStep}
+          nextStep={nextStep}
+          fields={fields}
+          handleFieldChange={handleFieldChange}
+        />
+      )}
+      {step === 3 && (
+        <Step3
+          prevStep={prevStep}
+          nextStep={nextStep}
+          fields={fields}
+          handleFieldChange={handleFieldChange}
+        />
+      )}
+      {step === 4 && (
+        <Step4
+          prevStep={prevStep}
+          handleSubmit={handleSubmit}
+          fields={fields}
         />
       )}
     </div>

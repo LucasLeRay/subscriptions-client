@@ -1,0 +1,64 @@
+.Container {
+  width: 550px;
+  height: 80px;
+  margin: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.LeftPart {
+  display: flex;
+}
+
+.ImageWrapper {
+  margin-right: 20px;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+}
+
+.ServiceWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.Container h3 {
+  margin: 0 0 5px;
+  font-size: 28px;
+}
+
+.Recurrence {
+  font-size: 18px;
+  color: var(--secondary-text-color);
+}
+
+.RightPart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Price {
+}
+
+.NextPayment {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.NextPayment span {
+  font-size: 18px;
+  margin-right: 10px;
+  color: var(--secondary-text-color);
+}
+
+.NextPayment h4 {
+  font-size: 22px;
+  margin: 0;
+}

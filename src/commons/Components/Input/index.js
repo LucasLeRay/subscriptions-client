@@ -15,11 +15,12 @@ function Input({ label, className, ...props }) {
 
 Input.propTypes = {
   label: element,
-  className: string.isRequired,
+  className: string,
 }
 
 Input.defaultProps = {
   label: <></>,
+  className: '',
 }
 
 export default Input

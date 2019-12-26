@@ -10,6 +10,7 @@ body {
   --secondary-bg-color: #fff;
   --bright-text-color: #fff;
   --dark-text-color: #000;
+  --secondary-text-color: #969696;
   width: 100vw;
   height: 100vh;
   background-color: var(--main-bg-color);

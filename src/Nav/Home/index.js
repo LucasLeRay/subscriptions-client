@@ -20,6 +20,7 @@ function Home() {
           <br />
           Add your first one!
         </h1>
+
         <Button onClick={() => setCreateSubscription(true)}>
           New subscription
         </Button>

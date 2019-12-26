@@ -9,6 +9,10 @@
   align-items: center;
 }
 
+.Form h1 {
+  margin: 0 auto 50px;
+}
+
 .Form h2 {
   font-weight: 400;
   font-size: 22px;
@@ -33,6 +37,40 @@
   margin-right: 20px;
 }
 
-.ActiveButton {
+.ActiveButton:first-child {
+  margin-right: 20px;
+}
+
+.ActiveButton:nth-child(2) {
   margin-left: 20px;
+}
+
+.Step2Wrapper {
+  display: flex;
+  align-items: center;
+  margin: 0 50px 20px;
+}
+
+.Step2Wrapper > div {
+  margin: 0 10px;
+  width: 180px;
+}
+
+.Step3Wrapper {
+  display: flex;
+  align-items: center;
+  margin: 0 50px 20px;
+}
+
+.Step3Wrapper > div {
+  margin: 0 10px;
+  width: 65px;
+}
+
+.TextInput {
+  font-size: 18px;
+}
+
+.Step4Wrapper {
+  width: 600px;
 }
