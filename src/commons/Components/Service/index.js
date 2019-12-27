@@ -1,5 +1,5 @@
 import React from 'react'
-import { number, string } from 'prop-types'
+import { number, string, bool } from 'prop-types'
 import {
   Container,
   LeftPart,
@@ -8,11 +8,14 @@ import {
   Recurrence,
   RightPart,
   NextPayment,
+  Hoverable,
 } from './Service.module.css'
 
-function Service({ service, image, recurrence, cost, dayLeft }) {
+const classNames = array => array.filter(Boolean).join(' ')
+
+function Service({ clickable, service, image, recurrence, cost, dayLeft }) {
   return (
-    <div className={Container}>
+    <div className={classNames([Container, clickable ? Hoverable : ''])}>
       <div className={LeftPart}>
         <div className={ImageWrapper} />
         <div className={ServiceWrapper}>
@@ -32,6 +35,7 @@ function Service({ service, image, recurrence, cost, dayLeft }) {
 }
 
 Service.propTypes = {
+  clickable: bool,
   service: string.isRequired,
   image: string,
   recurrence: string.isRequired,
@@ -40,6 +44,7 @@ Service.propTypes = {
 }
 
 Service.defaultProps = {
+  clickable: false,
   image: '',
 }
 

@@ -8,10 +8,12 @@ import {
   Elements,
   ButtonHeader,
   LandingLink,
+  IconWrapper,
 } from './Header.module.css'
 import { Context } from '../../../App'
 import Button from '../Button'
 import Modal from '../Modal'
+import Icon from '../Icon'
 import CreateSubscription from '../CreateSubscription'
 
 function Header({ location: { pathname } }) {
@@ -49,9 +51,9 @@ function Header({ location: { pathname } }) {
             >
               Nouvel abonnement
             </Button>
-            <span className={LandingLink} onClick={handleLogout}>
-              Logout
-            </span>
+            <Icon onClick={handleLogout} className={IconWrapper}>
+              menu
+            </Icon>
           </>
         )}
         {pathname === '/login' && (

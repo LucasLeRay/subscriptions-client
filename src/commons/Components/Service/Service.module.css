@@ -61,3 +61,8 @@
   font-size: 22px;
   margin: 0;
 }
+
+.Hoverable:hover {
+  background-color: var(--main-bg-color);
+  cursor: pointer;
+}

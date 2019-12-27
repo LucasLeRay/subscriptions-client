@@ -86,6 +86,7 @@ function Home() {
           )}
           {subscriptionsNextWeek.sort(compareDayLeft).map(s => (
             <Service
+              clickable
               key={s.subscriptionId}
               service={s.service}
               image={s.image}
@@ -101,6 +102,7 @@ function Home() {
           )}
           {subscriptionsNextMonth.sort(compareDayLeft).map(s => (
             <Service
+              clickable
               key={s.subscriptionId}
               service={s.service}
               image={s.image}
@@ -116,6 +118,7 @@ function Home() {
           )}
           {subscriptionsNextYear.sort(compareDayLeft).map(s => (
             <Service
+              clickable
               key={s.subscriptionId}
               service={s.service}
               image={s.image}
