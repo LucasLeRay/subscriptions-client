@@ -67,8 +67,13 @@
 }
 
 .PayDay {
-  width: 65px;
+  width: 80px;
   margin: 0 10px;
+  align-items: center;
+}
+
+.PayDay input {
+  text-align: center;
 }
 
 .PayMonth {

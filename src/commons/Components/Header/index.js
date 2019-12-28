@@ -29,7 +29,10 @@ function Header({ location: { pathname } }) {
     <div className={Container}>
       {createSubscription && (
         <Modal onClickOutSide={() => setCreateSubscription(false)}>
-          <CreateSubscription onDone={() => setCreateSubscription(false)} />
+          <CreateSubscription
+            onSuccess={() => window.location.reload()}
+            onCancel={() => setCreateSubscription(false)}
+          />
         </Modal>
       )}
       <Link to="/">

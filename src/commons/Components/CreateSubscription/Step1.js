@@ -10,7 +10,7 @@ import {
 import Input from '../Input'
 import Button from '../Button'
 
-function Step1({ onDone, nextStep, fields: { service }, handleFieldChange }) {
+function Step1({ onCancel, nextStep, fields: { service }, handleFieldChange }) {
   function validateFields() {
     return service.length > 0
   }
@@ -27,7 +27,7 @@ function Step1({ onDone, nextStep, fields: { service }, handleFieldChange }) {
       />
       <div className={Buttons}>
         <Button
-          onClick={onDone}
+          onClick={onCancel}
           backgroundColor="#fff"
           textColor="#f14d38"
           className={CancelButton}
@@ -47,7 +47,7 @@ function Step1({ onDone, nextStep, fields: { service }, handleFieldChange }) {
 }
 
 Step1.propTypes = {
-  onDone: func.isRequired,
+  onCancel: func.isRequired,
   nextStep: func.isRequired,
   fields: shape({
     service: string.isRequired,

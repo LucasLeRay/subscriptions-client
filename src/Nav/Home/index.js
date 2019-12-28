@@ -36,7 +36,10 @@ function Home() {
     <div className={Container}>
       {createSubscription && (
         <Modal onClickOutSide={() => setCreateSubscription(false)}>
-          <CreateSubscription onDone={() => setCreateSubscription(false)} />
+          <CreateSubscription
+            onSuccess={() => window.location.reload()}
+            onCancel={() => setCreateSubscription(false)}
+          />
         </Modal>
       )}
       {loading ? (

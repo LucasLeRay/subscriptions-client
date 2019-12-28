@@ -8,7 +8,7 @@ import Step2 from './Step2'
 import Step3 from './Step3'
 import Step4 from './Step4'
 
-function CreateSubscription({ onDone }) {
+function CreateSubscription({ onCancel, onSuccess }) {
   const [step, setStep] = useState(1)
   const [fields, handleFieldChange] = useForm({
     service: '',
@@ -42,7 +42,7 @@ function CreateSubscription({ onDone }) {
   async function handleSubmit() {
     try {
       await create()
-      onDone()
+      onSuccess()
     } catch (err) {
       console.error(err)
     }
@@ -52,7 +52,7 @@ function CreateSubscription({ onDone }) {
     <div className={Container}>
       {step === 1 && (
         <Step1
-          onDone={onDone}
+          onCancel={onCancel}
           nextStep={nextStep}
           fields={fields}
           handleFieldChange={handleFieldChange}
@@ -86,7 +86,8 @@ function CreateSubscription({ onDone }) {
 }
 
 CreateSubscription.propTypes = {
-  onDone: func.isRequired,
+  onCancel: func.isRequired,
+  onSuccess: func.isRequired,
 }
 
 export default CreateSubscription
