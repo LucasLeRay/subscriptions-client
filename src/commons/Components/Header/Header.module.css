@@ -38,13 +38,19 @@
   margin: 0 10px;
 }
 
-.LandingLink {
+.NoFrameLink {
   font-size: 18px;
+  color: var(--bright-text-color);
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
-.IconWrapper {
-  color: var(--bright-text-color);
-  margin-left: 10px;
-  font-size: 32px;
-  cursor: pointer;
+.AdminButton {
+  border-radius: 5px;
+  height: 30px;
+  font-size: 18px;
+  padding: 0 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+  margin: 0;
 }

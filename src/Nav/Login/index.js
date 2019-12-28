@@ -40,8 +40,12 @@ function Login({ history: { push } }) {
     } else {
       try {
         setLoading(true)
-        await Auth.signIn(fields.email, fields.password)
-        setUser(true)
+        const { signInUserSession } = await Auth.signIn(
+          fields.email,
+          fields.password,
+        )
+        const admin = signInUserSession.accessToken.payload['cognito:groups']
+        setUser({ admin })
         push('/')
       } catch (err) {
         setError(err.message)

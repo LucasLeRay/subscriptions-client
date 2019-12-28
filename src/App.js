@@ -11,8 +11,9 @@ function App() {
 
   async function onLoad() {
     try {
-      await Auth.currentSession()
-      setUser(true)
+      const { signInUserSession } = await Auth.currentAuthenticatedUser()
+      const admin = signInUserSession.accessToken.payload['cognito:groups']
+      setUser({ admin })
     } catch (err) {
       if (err !== 'No current user') {
         console.error(err)

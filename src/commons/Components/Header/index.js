@@ -7,13 +7,12 @@ import {
   Logo,
   Elements,
   ButtonHeader,
-  LandingLink,
-  IconWrapper,
+  NoFrameLink,
+  AdminButton,
 } from './Header.module.css'
 import { Context } from '../../../App'
 import Button from '../Button'
 import Modal from '../Modal'
-import Icon from '../Icon'
 import CreateSubscription from '../CreateSubscription'
 
 function Header({ location: { pathname } }) {
@@ -39,12 +38,23 @@ function Header({ location: { pathname } }) {
         <div className={Logo}>SubFollow</div>
       </Link>
       <div className={Elements}>
-        {pathname === '/' && !user && (
-          <Link to="/login">
-            <span className={LandingLink}>Login</span>
+        {user.admin && (
+          <Link to="/admin">
+            <Button
+              className={AdminButton}
+              textColor="#f14d38"
+              backgroundColor="#fff"
+            >
+              Admin
+            </Button>
           </Link>
         )}
-        {pathname === '/' && user && (
+        {pathname === '/' && !user && (
+          <Link to="/login">
+            <span className={NoFrameLink}>Login</span>
+          </Link>
+        )}
+        {user && (
           <>
             <Button
               className={ButtonHeader}
@@ -54,9 +64,9 @@ function Header({ location: { pathname } }) {
             >
               Nouvel abonnement
             </Button>
-            <Icon onClick={handleLogout} className={IconWrapper}>
-              menu
-            </Icon>
+            <span onClick={handleLogout} className={NoFrameLink}>
+              Logout
+            </span>
           </>
         )}
         {pathname === '/login' && (
