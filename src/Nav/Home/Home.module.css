@@ -4,18 +4,15 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  min-height: calc(100vh - 100px);
   text-align: center;
+  padding: 50px 0;
 }
 
 .LoadingWrapper {
   display: flex;
   align-items: center;
-  height: calc(100vh - 60px);
-}
-
-.NoSubscription {
-  margin-top: 250px;
+  height: calc(100vh - 100px);
 }
 
 .NoSubscription h1 {
@@ -28,7 +25,6 @@
 
 .SubscriptionsWrapper {
   height: 100%;
-  margin-top: 50px;
 }
 
 .DateTitle {

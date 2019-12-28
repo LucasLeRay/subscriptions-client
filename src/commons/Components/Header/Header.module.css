@@ -1,6 +1,7 @@
 .Container {
   width: 100vw;
   height: 60px;
+  position: fixed;
   background-color: var(--main-color);
   display: flex;
   align-items: center;
