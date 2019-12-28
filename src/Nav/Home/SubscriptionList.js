@@ -39,7 +39,6 @@ function SubscriptionList({ subscriptions, setCreateSubscription }) {
               clickable
               key={s.subscriptionId}
               service={s.service}
-              image={s.image}
               recurrence={s.recurrence}
               cost={s.cost}
               dayLeft={s.dayLeft}
@@ -55,7 +54,6 @@ function SubscriptionList({ subscriptions, setCreateSubscription }) {
               clickable
               key={s.subscriptionId}
               service={s.service}
-              image={s.image}
               recurrence={s.recurrence}
               cost={s.cost}
               dayLeft={s.dayLeft}
@@ -71,7 +69,6 @@ function SubscriptionList({ subscriptions, setCreateSubscription }) {
               clickable
               key={s.subscriptionId}
               service={s.service}
-              image={s.image}
               recurrence={s.recurrence}
               cost={s.cost}
               dayLeft={s.dayLeft}
@@ -99,7 +96,6 @@ SubscriptionList.propTypes = {
     shape({
       subscriptionId: string.isRequired,
       service: string.isRequired,
-      image: string,
       recurrence: string.isRequired,
       cost: number.isRequired,
       dayLeft: number.isRequired,

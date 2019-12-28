@@ -12,12 +12,23 @@ import {
 } from './Service.module.css'
 
 const classNames = array => array.filter(Boolean).join(' ')
+const toSlug = str => str.replace(/^\s+|\s+$/g, '').toLowerCase()
 
-function Service({ clickable, service, image, recurrence, cost, dayLeft }) {
+function Service({ clickable, service, recurrence, cost, dayLeft }) {
   return (
     <div className={classNames([Container, clickable ? Hoverable : ''])}>
       <div className={LeftPart}>
-        <div className={ImageWrapper} />
+        <div className={ImageWrapper}>
+          <object
+            data={`https://logo.clearbit.com/${toSlug(service)}.com?size=80`}
+            type="image/png"
+          >
+            <img
+              src="https://logo.clearbit.com/netflix.com?size=80"
+              alt={service}
+            />
+          </object>
+        </div>
         <div className={ServiceWrapper}>
           <h3>{service}</h3>
           <span className={Recurrence}>{`each ${recurrence}`}</span>
@@ -37,7 +48,6 @@ function Service({ clickable, service, image, recurrence, cost, dayLeft }) {
 Service.propTypes = {
   clickable: bool,
   service: string.isRequired,
-  image: string,
   recurrence: string.isRequired,
   cost: number.isRequired,
   dayLeft: number.isRequired,
@@ -45,7 +55,6 @@ Service.propTypes = {
 
 Service.defaultProps = {
   clickable: false,
-  image: '',
 }
 
 export default Service

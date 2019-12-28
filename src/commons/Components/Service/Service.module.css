@@ -18,7 +18,11 @@
   margin-right: 20px;
   width: 80px;
   height: 80px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+}
+
+.ImageWrapper object,
+.ImageWrapper img {
+  border-radius: 10px;
 }
 
 .ServiceWrapper {
