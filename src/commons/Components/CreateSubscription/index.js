@@ -34,7 +34,7 @@ function CreateSubscription({ onCancel, onSuccess }) {
         cost: Number(cost),
         recurrence,
         payDay: Number(payDay),
-        payMonth: Number(payMonth),
+        payMonth: recurrence === 'year' ? Number(payMonth) : 0,
       },
     })
   }

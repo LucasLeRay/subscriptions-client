@@ -2,11 +2,12 @@ import React from 'react'
 import ReactSelect from 'react-select'
 import { string, bool, oneOfType, shape, arrayOf, element } from 'prop-types'
 
-import { Container, SelectWrapper } from './Select.module.css'
+import { Container, SelectWrapper, Label } from './Select.module.css'
 
 const classNames = array => array.filter(Boolean).join(' ')
 
 const Select = ({
+  label,
   className,
   required,
   value,
@@ -16,6 +17,7 @@ const Select = ({
   ...props
 }) => (
   <div className={SelectWrapper}>
+    <span className={Label}>{label}</span>
     <ReactSelect
       placeholder=""
       value={value}
@@ -56,6 +58,7 @@ const Select = ({
 )
 
 Select.propTypes = {
+  label: element,
   className: string,
   required: bool,
   value: oneOfType([
@@ -69,6 +72,7 @@ Select.propTypes = {
 }
 
 Select.defaultProps = {
+  label: <></>,
   className: '',
   required: false,
   value: '',

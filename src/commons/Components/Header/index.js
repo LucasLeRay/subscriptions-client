@@ -62,7 +62,7 @@ function Header({ location: { pathname } }) {
               textColor="#f14d38"
               backgroundColor="#fff"
             >
-              Nouvel abonnement
+              New Subscription
             </Button>
             <span onClick={handleLogout} className={NoFrameLink}>
               Logout

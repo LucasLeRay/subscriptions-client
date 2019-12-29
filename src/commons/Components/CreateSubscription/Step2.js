@@ -11,8 +11,6 @@ import Input from '../Input'
 import Button from '../Button'
 import Select from '../Select'
 
-const costRegExp = /^[0-9]*(\.)?[0-9]*$/
-
 function Step2({
   prevStep,
   nextStep,
@@ -24,6 +22,7 @@ function Step2({
   }
 
   function handleCostChange(e) {
+    const costRegExp = /^[0-9]*(\.)?[0-9]*$/
     if (costRegExp.test(e.target.value)) {
       handleFieldChange(e)
     }

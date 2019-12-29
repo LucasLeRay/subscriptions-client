@@ -22,10 +22,12 @@ function Step4({
     <div className={classNames([Form, Step4Wrapper])}>
       <h1>Overview</h1>
       <Service
-        service={service}
-        recurrence={recurrence}
-        cost={Number(cost)}
-        dayLeft={calcDayLeft(Number(payDay), Number(payMonth))}
+        subscription={{
+          service,
+          cost: Number(cost),
+          recurrence,
+          dayLeft: calcDayLeft(Number(payDay), Number(payMonth)),
+        }}
       />
       <div className={Buttons}>
         <Button onClick={prevStep} className={ActiveButton}>

@@ -35,14 +35,7 @@ function SubscriptionList({ subscriptions, setCreateSubscription }) {
             ''
           )}
           {subscriptionsNextWeek.sort(compareDayLeft).map(s => (
-            <Service
-              clickable
-              key={s.subscriptionId}
-              service={s.service}
-              recurrence={s.recurrence}
-              cost={s.cost}
-              dayLeft={s.dayLeft}
-            />
+            <Service clickable key={s.subscriptionId} subscription={s} />
           ))}
           {subscriptionsNextMonth.length ? (
             <span className={DateTitle}>30 next days</span>
@@ -50,14 +43,7 @@ function SubscriptionList({ subscriptions, setCreateSubscription }) {
             ''
           )}
           {subscriptionsNextMonth.sort(compareDayLeft).map(s => (
-            <Service
-              clickable
-              key={s.subscriptionId}
-              service={s.service}
-              recurrence={s.recurrence}
-              cost={s.cost}
-              dayLeft={s.dayLeft}
-            />
+            <Service clickable key={s.subscriptionId} subscription={s} />
           ))}
           {subscriptionsNextYear.length ? (
             <span className={DateTitle}>365 next days</span>
@@ -65,14 +51,7 @@ function SubscriptionList({ subscriptions, setCreateSubscription }) {
             ''
           )}
           {subscriptionsNextYear.sort(compareDayLeft).map(s => (
-            <Service
-              clickable
-              key={s.subscriptionId}
-              service={s.service}
-              recurrence={s.recurrence}
-              cost={s.cost}
-              dayLeft={s.dayLeft}
-            />
+            <Service clickable key={s.subscriptionId} subscription={s} />
           ))}
         </div>
       ) : (
