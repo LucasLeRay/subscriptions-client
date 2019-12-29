@@ -42,10 +42,7 @@ function Service({ clickable, subscription }) {
               )}.com?size=80`}
               type="image/png"
             >
-              <img
-                src="https://logo.clearbit.com/netflix.com?size=80"
-                alt={subscription.service}
-              />
+              <div>{subscription.service[0]}</div>
             </object>
           </div>
           <div className={ServiceWrapper}>
