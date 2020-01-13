@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom'
 import { Auth } from 'aws-amplify'
 import {
   Container,
-  Logo,
+  LogoWrapper,
   Elements,
   ButtonHeader,
   NoFrameLink,
@@ -14,6 +14,7 @@ import { Context } from '../../../App'
 import Button from '../Button'
 import Modal from '../Modal'
 import CreateSubscription from '../CreateSubscription'
+import { ReactComponent as Logo } from './logo.svg'
 
 function Header({ location: { pathname } }) {
   const { user, setUser } = useContext(Context)
@@ -35,7 +36,9 @@ function Header({ location: { pathname } }) {
         </Modal>
       )}
       <Link to="/">
-        <div className={Logo}>SubFollow</div>
+        <div className={LogoWrapper}>
+          <Logo />
+        </div>
       </Link>
       <div className={Elements}>
         {user.admin && (

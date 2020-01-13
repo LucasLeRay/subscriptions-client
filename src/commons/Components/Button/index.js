@@ -19,7 +19,10 @@ function Button({
       className={classNames([className, Container])}
       style={
         hover && invertOnHover
-          ? { color: backgroundColor, backgroundColor: textColor }
+          ? {
+            color: backgroundColor,
+            backgroundColor: textColor,
+          }
           : { color: textColor, backgroundColor }
       }
       {...props}

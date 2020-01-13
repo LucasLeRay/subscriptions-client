@@ -12,10 +12,13 @@
   text-decoration: none;
 }
 
-.Logo {
-  color: var(--bright-text-color);
-  font-weight: 700;
-  margin-left: 20px;
+.LogoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.LogoWrapper svg {
+  height: 40px;
 }
 
 .Elements {
