@@ -28,10 +28,19 @@
 }
 
 .DateTitle {
+  display: flex;
+  margin: 40px 0 20px 30px;
   font-size: 28px;
 }
 
-.DateTitle {
-  display: flex;
-  margin: 40px 0 20px 30px;
+@media(max-width: 650px) {
+  .SubscriptionsWrapper {
+    width: 100%;
+  }
+}
+
+@media(max-width: 450px) {
+  .DateTitle {
+    font-size: 22px;
+  }
 }

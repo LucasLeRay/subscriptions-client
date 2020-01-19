@@ -8,6 +8,7 @@ import {
   Step3Wrapper,
   PayDay,
   PayMonth,
+  Recurrence,
 } from './CreateSubscription.module.css'
 import Input from '../Input'
 import Button from '../Button'
@@ -49,16 +50,17 @@ function Step3({
       <h2>On what date?</h2>
       <div className={Step3Wrapper}>
         <span className={TextInput}>The</span>
-        <Input
-          className={PayDay}
-          id="payDay"
-          type="number"
-          min="1"
-          max="30"
-          value={payDay}
-          onChange={handleFieldChange}
-        />
-        {recurrence === 'year' && (
+        <div className={Recurrence}>
+          <Input
+            className={PayDay}
+            id="payDay"
+            type="number"
+            min="1"
+            max="30"
+            value={payDay}
+            onChange={handleFieldChange}
+          />
+          {recurrence === 'year' && (
           <Select
             className={PayMonth}
             type="text"
@@ -69,7 +71,8 @@ function Step3({
             }))}
             onChange={e => handleFieldChange(e, 'payMonth')}
           />
-        )}
+          )}
+        </div>
         <span className={TextInput}>{`of each ${recurrence}`}</span>
       </div>
       <div className={Buttons}>

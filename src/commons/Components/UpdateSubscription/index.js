@@ -13,6 +13,7 @@ import {
   Recurrence,
   CostInput,
   TextInput,
+  YearLine,
 } from './UpdateSubscription.module.css'
 import useForm from '../../hooks/useForm'
 import Input from '../Input'
@@ -33,6 +34,8 @@ const months = [
   'November',
   'December',
 ]
+
+const classNames = array => array.filter(Boolean).join(' ')
 
 function UpdateSubscription({ subscription, onUpdate, onDelete }) {
   const [loading, setLoading] = useState(false)
@@ -126,18 +129,22 @@ function UpdateSubscription({ subscription, onUpdate, onDelete }) {
             className={CostInput}
           />
         </div>
-        <div className={SecondLine}>
-          <span className={TextInput}>The</span>
-          <Input
-            className={PayDay}
-            id="payDay"
-            type="number"
-            min="1"
-            max="30"
-            value={fields.payDay}
-            onChange={handleFieldChange}
-          />
-          {fields.recurrence === 'year' && (
+        <div className={classNames([SecondLine,
+          fields.recurrence === 'year' ? YearLine : '',
+        ])}
+        >
+          <div>
+            <span className={TextInput}>The</span>
+            <Input
+              className={PayDay}
+              id="payDay"
+              type="number"
+              min="1"
+              max="30"
+              value={fields.payDay}
+              onChange={handleFieldChange}
+            />
+            {fields.recurrence === 'year' && (
             <Select
               className={PayMonth}
               type="text"
@@ -151,24 +158,27 @@ function UpdateSubscription({ subscription, onUpdate, onDelete }) {
               }))}
               onChange={e => handleFieldChange(e, 'payMonth')}
             />
-          )}
-          <span className={TextInput}>of each</span>
-          <Select
-            className={Recurrence}
-            type="text"
-            value={{ label: fields.recurrence, value: fields.recurrence }}
-            onChange={e => handleFieldChange(e, 'recurrence')}
-            options={[
-              {
-                label: 'month',
-                value: 'month',
-              },
-              {
-                label: 'year',
-                value: 'year',
-              },
-            ]}
-          />
+            )}
+          </div>
+          <div>
+            <span className={TextInput}>of each</span>
+            <Select
+              className={Recurrence}
+              type="text"
+              value={{ label: fields.recurrence, value: fields.recurrence }}
+              onChange={e => handleFieldChange(e, 'recurrence')}
+              options={[
+                {
+                  label: 'month',
+                  value: 'month',
+                },
+                {
+                  label: 'year',
+                  value: 'year',
+                },
+              ]}
+            />
+          </div>
         </div>
         <div className={Buttons}>
           <Button onClick={handleDelete} loading={loading === 'delete'}>

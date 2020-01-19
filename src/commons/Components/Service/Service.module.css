@@ -78,3 +78,83 @@
   background-color: var(--main-bg-color);
   cursor: pointer;
 }
+
+@media(max-width: 650px) {
+  .Container {
+    width: calc(100% - 70px);
+    height: 60px;
+    margin: 20px;
+  }
+
+  .ImageWrapper {
+    font-size: 48px;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .ImageWrapper object,
+  .ImageWrapper img {
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .LeftPart {
+    align-items: center;
+  }
+
+  .Container h3 {
+    font-size: 20px;
+  }
+  
+  .Recurrence {
+    font-size: 16px;
+  }
+
+  .NextPayment span {
+    font-size: 16px;
+  }
+  
+  .NextPayment h4 {
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+@media(max-width: 450px) {
+  .Container {
+    width: calc(100% - 70px);
+    height: 40px;
+    margin: 15px;
+  }
+
+  .ImageWrapper {
+    font-size: 32px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .ImageWrapper object,
+  .ImageWrapper img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .Container h3 {
+    font-size: 18px;
+  }
+  
+  .Recurrence {
+    font-size: 14px;
+  }
+
+  .NextPayment span {
+    font-size: 14px;
+  }
+  
+  .NextPayment h4 {
+    font-size: 16px;
+  }
+}

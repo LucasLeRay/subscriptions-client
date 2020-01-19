@@ -42,6 +42,8 @@
 }
 
 .NoFrameLink {
+  display: flex;
+  align-items: center;
   font-size: 18px;
   color: var(--bright-text-color);
   font-weight: 700;
@@ -49,11 +51,23 @@
   margin-left: 10px;
 }
 
-.AdminButton {
-  border-radius: 5px;
-  height: 30px;
-  font-size: 18px;
-  padding: 0 15px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
-  margin: 0;
+.LogoutIcon {
+  display: none;
+}
+
+@media(max-width: 500px) {
+  .LogoutText {
+    display: none;
+  }
+
+  .LogoutIcon {
+    display: inline;
+    font-weight: 700;
+  }
+}
+
+@media(max-width: 350px) {
+  .ButtonHeader {
+    font-size: 14px;
+  }
 }

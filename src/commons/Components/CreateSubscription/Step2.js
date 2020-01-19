@@ -30,7 +30,7 @@ function Step2({
 
   return (
     <div className={Form}>
-      <h2>How many do you pay?</h2>
+      <h2>How much do you pay?</h2>
       <div className={Step2Wrapper}>
         <Input
           id="cost"

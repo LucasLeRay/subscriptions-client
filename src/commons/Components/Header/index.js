@@ -8,10 +8,12 @@ import {
   Elements,
   ButtonHeader,
   NoFrameLink,
-  AdminButton,
+  LogoutText,
+  LogoutIcon,
 } from './Header.module.css'
 import { Context } from '../../../App'
 import Button from '../Button'
+import Icon from '../Icon'
 import Modal from '../Modal'
 import CreateSubscription from '../CreateSubscription'
 import { ReactComponent as Logo } from './logo.svg'
@@ -41,17 +43,6 @@ function Header({ location: { pathname } }) {
         </div>
       </Link>
       <div className={Elements}>
-        {user.admin && (
-          <Link to="/admin">
-            <Button
-              className={AdminButton}
-              textColor="#f14d38"
-              backgroundColor="#fff"
-            >
-              Admin
-            </Button>
-          </Link>
-        )}
         {pathname === '/' && !user && (
           <Link to="/login">
             <span className={NoFrameLink}>Login</span>
@@ -68,7 +59,8 @@ function Header({ location: { pathname } }) {
               New Subscription
             </Button>
             <span onClick={handleLogout} className={NoFrameLink}>
-              Logout
+              <Icon className={LogoutIcon}>power_settings_new</Icon>
+              <span className={LogoutText}>Logout</span>
             </span>
           </>
         )}

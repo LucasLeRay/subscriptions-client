@@ -55,8 +55,12 @@ function Service({ clickable, subscription }) {
         <div className={RightPart}>
           <h3>{`$${subscription.cost.toFixed(2)}`}</h3>
           <div className={NextPayment}>
-            <span>in</span>
-            <h4>{`${subscription.dayLeft} d`}</h4>
+            {subscription.dayLeft === 0 ? <h4>today</h4> :
+              (<>
+                <span>in</span>
+                <h4>{`${subscription.dayLeft} d`}</h4>
+                {/* eslint-disable-next-line react/jsx-closing-tag-location */}
+              </>)}
           </div>
         </div>
       </div>

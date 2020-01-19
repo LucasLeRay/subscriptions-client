@@ -18,8 +18,8 @@
   margin: 20px;
 }
 
-@media (max-width: 576px) {
-  .Content > div {
-    padding: 20px;
+@media(max-width: 650px) {
+  .Content {
+    width: 90%;
   }
 }
