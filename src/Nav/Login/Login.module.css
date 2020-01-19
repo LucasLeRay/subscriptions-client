@@ -52,3 +52,21 @@
     font-size: 16px;
   }
 }
+
+@media(max-height: 600px) {
+  .Title {
+    display: none;
+  }
+
+  .Form {
+    margin-top: 60px;
+  }
+
+  .MarginButton {
+    margin: 0;
+  }
+
+  .Container > div:first-child {
+    display: none;
+  }
+}

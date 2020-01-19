@@ -84,7 +84,7 @@ function Login({ history: { push } }) {
           onChange={handleFieldChange}
         />
         <Button loading={loading} className={MarginButton} type="submit">
-          Submit
+          Login
         </Button>
         <span className={ErrorWrapper}>{error}</span>
       </form>
