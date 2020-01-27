@@ -20,7 +20,7 @@ function Landing() {
         <div className={Text}>
           <h1>All your subscriptions in one place</h1>
           <p>
-          SubFollow is the best subscription management tool. You can track all
+          SubFollow is the ultimate subscription management tool. You can track all
           your subscriptions simply and for free. No more forgotten payments or
           hidden fees!
           </p>

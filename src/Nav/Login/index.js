@@ -73,10 +73,7 @@ function Login({ history: { push } }) {
           id="password"
           label={
             <>
-              {'Password - '}
-              <span className={ForgotPassword}>
-                <Link to="/forgot">forgot?</Link>
-              </span>
+              Password
             </>
           }
           type="password"
